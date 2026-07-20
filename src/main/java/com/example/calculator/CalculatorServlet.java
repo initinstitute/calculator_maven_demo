@@ -26,13 +26,14 @@ public class CalculatorServlet extends HttpServlet {
             String op = req.getParameter("op");
 
             double result = calculatorService.calculate(a, b, op);
-            out.print(String.format("{"operation":"%s", "result":%.2f}", op, result));
+            // Escaped double quotes (\") inside the JSON string
+            out.print(String.format("{\"operation\":\"%s\", \"result\":%.2f}", op, result));
         } catch (IllegalArgumentException e) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            out.print(String.format("{"error":"%s"}", e.getMessage()));
+            out.print(String.format("{\"error\":\"%s\"}", e.getMessage()));
         } catch (Exception e) {
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            out.print("{"error":"Internal Server Error"}");
+            out.print("{\"error\":\"Internal Server Error\"}");
         }
     }
 }
