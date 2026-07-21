@@ -1,38 +1,48 @@
 pipeline {
     agent any
-tools {
-   maven 'maven-3.9.16'
-}
-    stages {       
-        stage(checkout) {
+
+    tools {
+        maven 'maven-3.9.16'
+    }
+
+    stages {
+
+        stage('Checkout') {
             steps {
-                     checkout scmGit(branches: [[name: '*/main']],
-                     extensions: [], userRemoteConfigs: [[credentialsId: 'git_cred_maven',
-                     url: 'https://github.com/initinstitute/calculator_maven_demo.git']])
+                checkout scmGit(
+                    branches: [[name: '*/main']],
+                    extensions: [],
+                    userRemoteConfigs: [[
+                        credentialsId: 'git_cred_maven',
+                        url: 'https://github.com/initinstitute/calculator_maven_demo.git'
+                    ]]
+                )
             }
         }
 
-        stage('parallel') {
+        stage('Parallel') {
             parallel {
 
-                stage('stage2') {
+                stage('Build & Deploy') {
                     steps {
-                        sh "mvn clean deploy"
+                        sh 'mvn clean deploy'
                     }
                 }
 
-                stage('stage3') {
+                stage('Notification') {
                     steps {
-                        sh "echo "maven deploy completed""
+                        sh 'echo "Maven deploy completed"'
                     }
                 }
+
             }
         }
 
-        stage('stage4') {
+        stage('Complete') {
             steps {
-                echo "Pipeline is completed"
+                echo 'Pipeline is completed'
             }
         }
+
     }
 }
