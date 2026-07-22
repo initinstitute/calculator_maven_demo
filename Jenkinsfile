@@ -6,6 +6,11 @@ pipeline {
             defaultValue: 'v1.0',
             description: 'enter the version you want to pass'
         )
+        choice(
+            name: 'branch',
+            choices: ['main','dev','test'],
+            description: 'enter the branch you want to pass'
+        )
     }
 
     tools {
@@ -54,7 +59,7 @@ pipeline {
 
         stage('Complete') {
             steps {
-                echo 'Pipeline is completed'
+                echo 'Pipeline is completed on ${params.branch} branch'
             }
         }
 
