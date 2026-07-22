@@ -41,7 +41,7 @@ pipeline {
                         sh 'echo "Maven deployed with version ${params.version} completed"'
                     }
                 }
-             stage('Notification') {
+             stage('Notification2') {
                     steps {
                         sh '''
                         echo "Maven deploy completed"
