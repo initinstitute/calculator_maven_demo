@@ -3,7 +3,7 @@ pipeline {
     parameters{
         string(
             name: 'version'
-            defaultvalue: 'v1.0'
+            defaultValue: 'v1.0'
             description: 'enter the version you want to pass'
         )
     }
