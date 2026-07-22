@@ -11,7 +11,7 @@ pipeline {
             choices: ['main','dev','test'],
             description: 'enter the branch you want to pass'
         )
-        booleanparam(
+        booleanParam(
             name: 'deploy_to_prod',
             defaultValue: 'true',
             description: 'deploy in the prod env'
