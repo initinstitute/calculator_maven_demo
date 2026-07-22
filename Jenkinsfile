@@ -1,5 +1,12 @@
 pipeline {
     agent any
+    parameters{
+        string(
+            name: 'version'
+            defaultvalue:'v1.0'
+            description: 'enter the version you want to pass'
+        )
+    }
 
     tools {
         maven 'maven-3.9.16'
@@ -31,7 +38,7 @@ pipeline {
 
                 stage('Notification') {
                     steps {
-                        sh 'echo "Maven deploy completed"'
+                        sh 'echo "Maven deployed with version ${params.version} completed"'
                     }
                 }
              stage('Notification') {
