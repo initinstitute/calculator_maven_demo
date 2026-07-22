@@ -59,7 +59,7 @@ pipeline {
 
         stage('Complete') {
             steps {
-                echo 'Pipeline is completed on ${params.branch} branch'
+                echo "Pipeline is completed on ${params.branch} branch"
             }
         }
 
