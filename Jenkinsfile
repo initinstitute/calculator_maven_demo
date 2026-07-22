@@ -2,8 +2,8 @@ pipeline {
     agent any
     parameters{
         string(
-            name: 'version'
-            defaultValue: 'v1.0'
+            name: 'version',
+            defaultValue: 'v1.0',
             description: 'enter the version you want to pass'
         )
     }
