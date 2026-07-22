@@ -38,13 +38,13 @@ pipeline {
 
                 stage('Notification') {
                     steps {
-                        sh 'echo "Maven deployed with version ${params.version} completed"'
+                        echo "Maven deployed with version ${params.version} completed"
                     }
                 }
              stage('Notification2') {
                     steps {
                         sh '''
-                        echo "Maven deploy completed"
+                        echo "Maven deployed with version $version completed"
                         '''
                     }
                 }   
