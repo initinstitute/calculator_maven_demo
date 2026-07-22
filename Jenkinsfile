@@ -38,9 +38,6 @@ pipeline {
                     steps {
                         sh '''
                         echo "Maven deploy completed"
-                        sudo apt install tomcat10
-                        rm -rf /var/lib/tomcat10/webapps/ROOT
-                        cp target/....war /var/lib/tomcat10/webapps/ROOT.war
                         '''
                     }
                 }   
