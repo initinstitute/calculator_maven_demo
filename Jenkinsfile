@@ -16,6 +16,17 @@ pipeline {
             defaultValue: 'true',
             description: 'deploy in the prod env'
         )
+        password(
+            name: 'tocken',
+            defaultValue: '',
+            description: 'enter password for github'
+        )
+        text(
+            
+        )
+        fies(
+            
+        )
     }
 
     tools {
